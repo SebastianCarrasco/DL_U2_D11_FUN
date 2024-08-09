@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Colores</title>
+</head>
+<body>
+    <div id="div1" style="width:200px; height:200px; background-color:blue;"></div>
+    <div id="div2" style="width:200px; height:200px; background-color:red;"></div>
+    <div id="div3" style="width:200px; height:200px; background-color:green;"></div>
+    <div id="div4" style="width:200px; height:200px; background-color:yellow;"></div>
+
+    <!-- Div que cambiará de color al presionar las teclas 'a', 's', 'd' -->
+    <div id="key" style="width:200px; height:200px; background-color:white; border:1px solid black; margin-top:20px;"></div>
+
+    <script>
+        // Cambiar color al hacer clic en cada div
+        document.getElementById('div1').addEventListener('click', function() {
+            this.style.backgroundColor = 'black';
+        });
+        document.getElementById('div2').addEventListener('click', function() {
+            this.style.backgroundColor = 'black';
+        });
+        document.getElementById('div3').addEventListener('click', function() {
+            this.style.backgroundColor = 'black';
+        });
+        document.getElementById('div4').addEventListener('click', function() {
+            this.style.backgroundColor = 'black';
+        });
+
+        // Variable global para almacenar el color
+        let color = '';
+
+        // Almacenar color dependiendo de la tecla presionada
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'a') {
+                color = 'pink';
+            } else if (event.key === 's') {
+                color = 'orange';
+            } else if (event.key === 'd') {
+                color = 'lightblue';
+            }
+
+            // Cambiar color del div 'key'
+            const keyDiv = document.getElementById('key');
+            if (keyDiv) {
+                keyDiv.style.backgroundColor = color;
+            }
+        });
+
+        // Crear nuevo div al presionar 'q', 'w' o 'e'
+        document.addEventListener('keydown', function(event) {
+            let newDivColor = '';
+            if (event.key === 'q') {
+                newDivColor = 'purple';
+            } else if (event.key === 'w') {
+                newDivColor = 'gray';
+            } else if (event.key === 'e') {
+                newDivColor = 'brown';
+            }
+
+            if (newDivColor) {
+                const newDiv = document.createElement('div');
+                newDiv.style.width = '200px';
+                newDiv.style.height = '200px';
+                newDiv.style.backgroundColor = newDivColor;
+                newDiv.style.border = '1px solid black';
+                document.body.appendChild(newDiv);
+            }
+        });
+    </script>
+</body>
+</html>
